@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view />
+    <router-view v-wechat-title="$route.meta.title" />
   </div>
 </template>
 
@@ -16,8 +16,8 @@ export default {
 <style>
 #app {
   width: 100%;
-  height: 100%;
-  max-width: 640px;
+  height: 100vh;
+  max-width: 3.75rem;
   margin: 0 auto;
   position: relative;
   text-align: center;

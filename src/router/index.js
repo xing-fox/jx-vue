@@ -13,7 +13,24 @@ export default new Router({
       component: Index,
       meta: {
         title: '集保'
-      }
+      },
+      children: [
+        {
+          path: 'hot',
+          name: 'Hot',
+          component: resolve => require(['@/view/pages/hot'], resolve),
+          meta: {
+            title: '热销'
+          }
+        }, {
+          path: 'product',
+          name: 'Product',
+          component: resolve => require(['@/view/pages/product'], resolve),
+          meta: {
+            title: '产品'
+          }
+        }
+      ]
     }
   ]
 })

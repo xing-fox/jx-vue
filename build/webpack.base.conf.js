@@ -2,6 +2,7 @@
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
+const vuxLoader = require('vux-loader')
 const vueLoaderConfig = require('./vue-loader.conf')
 
 function resolve (dir) {
@@ -19,13 +20,10 @@ const createLintingRule = () => ({
   }
 })
 
-module.exports = {
+const webpackConfig = {
   context: path.resolve(__dirname, '../'),
   entry: {
     app: './src/main.js'
-  },
-  externals: {
-    'Swiper': 'Swiper'
   },
   output: {
     path: config.build.assetsRoot,
@@ -41,9 +39,16 @@ module.exports = {
       '@': resolve('src'),
     }
   },
+  externals: {
+    'Swiper': 'Swiper',
+  },
   module: {
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),
+      {
+        test: /\.less$/,
+        loader: 'style!css!less'
+      },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -93,3 +98,9 @@ module.exports = {
     child_process: 'empty'
   }
 }
+
+module.exports = vuxLoader.merge(webpackConfig, {
+  plugins: ['vux-ui', {
+    name: 'duplicate-style'
+  }]
+})
