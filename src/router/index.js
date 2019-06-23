@@ -3,11 +3,13 @@ import Router from 'vue-router'
 Vue.use(require('vue-wechat-title'))
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
+  base: '/jbgzh/',
   routes: [
     {
       path: '/',
       name: 'Index',
+      redirect: '/product',
       component: resolve => require(['@/view/index'], resolve),
       meta: {
         title: '集保'
@@ -48,8 +50,58 @@ export default new Router({
       name: 'OrderList',
       component: resolve => require(['@/view/pages/order-list'], resolve),
       meta: {
-        title: '产品名称'
+        title: '我的保单'
+      }
+    }, {
+      path: '/loginIndex',
+      name: 'LoginIndex',
+      component: resolve => require(['@/view/login/index'], resolve),
+      meta: {
+        title: '登录'
+      }
+    }, {
+      path: '/insureInformation',
+      name: 'InsureInformation',
+      component: resolve => require(['@/view/pages/insure-information'], resolve),
+      meta: {
+        title: '填写投保信息'
+      }
+    }, {
+      path: '/loginVerify',
+      name: 'LoginVerify',
+      component: resolve => require(['@/view/login/verify'], resolve),
+      meta: {
+        title: '登录'
+      }
+    }, {
+      path: '/register',
+      name: 'Register',
+      component: resolve => require(['@/view/login/register'], resolve),
+      meta: {
+        title: '注册'
       }
     }
   ]
 })
+
+// router.beforeEach((to, from, next) => {
+//   const Token = localStorage.getItem('UserInfo')
+//   if (!Token && to.name !== 'login_index' && to.name !== 'login_getpassword' && to.name !== 'login_resetpassword') {
+//     next({
+//       name: 'login_index'
+//     })
+//   } else if ((!Token && to.name === 'login_index') || (!Token && to.name === 'login_getpassword') || (!Token && to.name === 'login_resetpassword')) {
+//     next()
+//   } else if ((Token && to.name === 'login_index') || (Token && to.name === 'login_getpassword') || (Token && to.name === 'login_resetpassword')) {
+//     next({
+//       name: 'home_personal'
+//     })
+//   }
+//   next()
+// })
+
+// router.afterEach(() => {
+//   window.scrollTo(0, 0)
+// })
+
+export default router

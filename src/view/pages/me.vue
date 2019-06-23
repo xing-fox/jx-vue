@@ -59,10 +59,6 @@
       height: .44rem;
       line-height: .44rem;
       margin: 0 .18rem;
-      border-bottom: 1px solid #eee;
-      &:nth-last-child(1) {
-        border: none;
-      }
       .icon {
         display: inline-block;
         width: .16rem;
@@ -111,7 +107,7 @@
     </div>
     <div class="phone">18226626731</div>
     <ul class="nav">
-      <li>
+      <li @click="changeFunc">
         <i class="icon icon-1" />
         <div class="name">我的保单</div>
       </li>
@@ -124,12 +120,12 @@
         <div class="name">我的理赔</div>
       </li>
     </ul>
-    <div class="item">
+    <div class="item bor-1px-b">
       <i class="icon icon-1"></i>
       <span class="name">关注微信</span>
       <i class="arrow"></i>
     </div>
-    <div class="item">
+    <div class="item bor-1px-b">
       <i class="icon icon-2"></i>
       <span class="name">客服电话</span>
       <span class="item-phone">18226626731</span>
@@ -145,6 +141,13 @@
 
 <script>
 export default {
-  name: 'Me'
+  name: 'Me',
+  methods: {
+    changeFunc () {
+      this.$router.push({
+        path: '/orderList'
+      })
+    }
+  }
 }
 </script>

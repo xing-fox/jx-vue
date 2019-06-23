@@ -186,6 +186,17 @@
           }
         }
       }
+      .zzc {
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, .3);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+      }
       .modal {
         width: 100%;
         padding: .4rem 0 0 0;
@@ -264,6 +275,45 @@
       }
     }
   }
+  .animated {
+    -webkit-animation-duration: .5s;
+    animation-duration: .5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+
+  @-webkit-keyframes fadeInUp {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 100%, 0);
+      transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 100%, 0);
+      transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .fadeInUp {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+  }
 </style>
 
 <template>
@@ -308,10 +358,10 @@
         <img src="../../assets/images/icon/down.png">
       </div>
       <div class="footer">
-        <div class="fypfee" v-if="false">
+        <div class="fypfee" v-if="!checkStatus">
           <div class="name">30.00元 (保费)</div>
           <div class="value">
-            <div class="box">
+            <div class="box" @click="checkStatus = true">
               保费试算
             </div>
           </div>
@@ -324,33 +374,35 @@
           <div class="middle">
             <span>￥30</span>
           </div>
-          <div class="right">
+          <div class="right" @click="buyInsure">
             <span>立即投保</span>
           </div>
         </div>
       </div>
-      <div class="modal">
-        <div class="close"></div>
-        <div class="item">
-          <div class="name">投保计划</div>
-          <div class="value">美亚境外旅游险</div>
-        </div>
-        <div class="item">
-          <div class="name">投保年龄</div>
-          <div class="value">60天 - 90周岁</div>
-        </div>
-        <div class="list">
-          <div class="name">投保期限</div>
-          <ul>
-            <li class="on">1-3天</li>
-            <li>4-7天</li>
-            <li>8-15天</li>
-            <li>15-30天</li>
-          </ul>
-        </div>
-        <div class="item bor-null">
-          <div class="name">可够份数</div>
-          <div class="value">每名保险人最多可购一份</div>
+      <div class="zzc" v-if="checkStatus" @touchmove.prevent>
+        <div class="modal animated fadeInUp" v-if="checkStatus" @touchmove.prevent>
+          <div class="close" @click="checkStatus = false"></div>
+          <div class="item">
+            <div class="name">投保计划</div>
+            <div class="value">美亚境外旅游险</div>
+          </div>
+          <div class="item">
+            <div class="name">投保年龄</div>
+            <div class="value">60天 - 90周岁</div>
+          </div>
+          <div class="list">
+            <div class="name">投保期限</div>
+            <ul>
+              <li class="on">1-3天</li>
+              <li>4-7天</li>
+              <li>8-15天</li>
+              <li>15-30天</li>
+            </ul>
+          </div>
+          <div class="item bor-null">
+            <div class="name">可够份数</div>
+            <div class="value">每名保险人最多可购一份</div>
+          </div>
         </div>
       </div>
     </div>
@@ -361,7 +413,16 @@
 export default {
   name: 'ProcuctDetails',
   data () {
-    return {}
+    return {
+      checkStatus: false
+    }
+  },
+  methods: {
+    buyInsure () {
+      this.$router.push({
+        path: '/insureInformation'
+      })
+    }
   }
 }
 </script>

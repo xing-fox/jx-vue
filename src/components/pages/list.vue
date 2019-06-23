@@ -5,10 +5,6 @@
       display: flex;
       padding: 0 0 .18rem 0;
       margin: .18rem .2rem 0 .18rem;
-      border-bottom: 1px solid #eee;
-      &:nth-last-child(1) {
-        border-bottom: none;
-      }
       .list-img {
         display: inline-block;
         width: .8rem;
@@ -51,7 +47,7 @@
 
 <template>
   <ul class="data">
-    <li class="data-list">
+    <li class="data-list bor-1px-b" @click="changeDetails">
       <img class="list-img" src="../../assets/images/product/1.png">
       <div class="list-product">
         <div class="product-title">
@@ -63,7 +59,7 @@
       </div>
       <img class="list-arrow" src="../../assets/images/icon/right.png">
     </li>
-    <li class="data-list">
+    <li class="data-list bor-1px-b" @click="changeDetails">
       <img class="list-img" src="../../assets/images/product/2.png">
       <div class="list-product">
         <div class="product-title">美亚境外旅游险</div>
@@ -72,7 +68,7 @@
       </div>
       <img class="list-arrow" src="../../assets/images/icon/right.png">
     </li>
-    <li class="data-list">
+    <li class="data-list bor-1px-b" @click="changeDetails">
       <img class="list-img" src="../../assets/images/product/3.png">
       <div class="list-product">
         <div class="product-title">美亚境外旅游险</div>
@@ -81,7 +77,7 @@
       </div>
       <img class="list-arrow" src="../../assets/images/icon/right.png">
     </li>
-    <li class="data-list">
+    <li class="data-list bor-1px-b" @click="changeDetails">
       <img class="list-img" src="../../assets/images/product/1.png">
       <div class="list-product">
         <div class="product-title">
@@ -93,7 +89,7 @@
       </div>
       <img class="list-arrow" src="../../assets/images/icon/right.png">
     </li>
-    <li class="data-list">
+    <li class="data-list bor-1px-b" @click="changeDetails">
       <img class="list-img" src="../../assets/images/product/2.png">
       <div class="list-product">
         <div class="product-title">美亚境外旅游险</div>
@@ -102,7 +98,7 @@
       </div>
       <img class="list-arrow" src="../../assets/images/icon/right.png">
     </li>
-    <li class="data-list">
+    <li class="data-list" @click="changeDetails">
       <img class="list-img" src="../../assets/images/product/3.png">
       <div class="list-product">
         <div class="product-title">美亚境外旅游险</div>
@@ -116,6 +112,13 @@
 
 <script>
 export default {
-  name: 'List'
+  name: 'List',
+  methods: {
+    changeDetails () {
+      this.$router.push({
+        path: '/pdetails'
+      })
+    }
+  }
 }
 </script>

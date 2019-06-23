@@ -46,7 +46,6 @@
         height: 0.44rem;
         line-height: 0.44rem;
         padding: 0 .18rem;
-        border-bottom: 1px solid #eee;
         .name {
           flex: 1;
           color: #3a3f3a;
@@ -135,7 +134,6 @@
         justify-content : flex-end;
         padding: .11rem .18rem .11rem 0;
         text-align: right;
-        border-top: 1px solid #eee;
         .button {
           display: table;
           color: #7E817E;
@@ -170,7 +168,7 @@
     </ul>
     <ul class="list">
       <li>
-        <div class="type">
+        <div class="type bor-1px-b">
           <span class="name">美亚境外旅游险</span>
           <span class="value color-1">保障中</span>
         </div>
@@ -196,7 +194,7 @@
         <div class="time">
           <span>投保时间：</span>2019-06-17 18:12
         </div>
-        <div class="footer">
+        <div class="footer bor-1px-t">
           <div class="button">
             <span>再次购买</span>
           </div>
@@ -235,7 +233,7 @@
         <div class="time">
           <span>投保时间：</span>2019-06-17 18:12
         </div>
-        <div class="footer">
+        <div class="footer bor-1px-t">
           <div class="button">
             <span>再次购买</span>
           </div>
@@ -274,7 +272,7 @@
         <div class="time">
           <span>投保时间：</span>2019-06-17 18:12
         </div>
-        <div class="footer">
+        <div class="footer bor-1px-t">
           <div class="button">
             <span>再次购买</span>
           </div>
@@ -313,7 +311,7 @@
         <div class="time">
           <span>投保时间：</span>2019-06-17 18:12
         </div>
-        <div class="footer">
+        <div class="footer bor-1px-t">
           <div class="button">
             <span>再次购买</span>
           </div>

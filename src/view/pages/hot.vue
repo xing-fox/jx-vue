@@ -1,5 +1,6 @@
 <style lang="less" scoped>
   #hot {
+    font-size: 0;
     width: 100%;
     .search {
       position: absolute;
