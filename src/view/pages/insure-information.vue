@@ -48,7 +48,7 @@
           font-size: .15rem;
           text-align: right;
           &.color {
-            color: #3F86F7;
+            color: #3F86F7 !important;
           }
         }
         input {
@@ -143,10 +143,20 @@
 
 <style lang="less">
   #insure {
-    .vux-cell-box {
-      &:not(:first-child):before {
-        border: none !important;
+    .weui-cell{
+      padding: 0;
+      &:before {
+        border-top:none;
       }
+    }
+    .weui-cell_access .weui-cell__ft:after {
+      content: "";
+      display: inline-block;
+      height: 0;
+      width: 0;
+      border: 0;
+      border-color: #FFF;
+      transform: none;
     }
   }
 </style>
